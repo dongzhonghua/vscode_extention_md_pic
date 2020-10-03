@@ -11,21 +11,24 @@
 		"Other"
 	],
 	"activationEvents": [
+		"onCommand:extention.upload",
+		"onCommand:extention.upload_remote",
+		"onCommand:extention.upload_local",
 		"*"
 	],
 	"main": "./extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "md.upload",
+				"command": "extention.upload",
 				"title": "upload"
 			},
 			{
-				"command": "md-pic.upload_remote",
+				"command": "extention.upload_remote",
 				"title": "uploadRemote"
 			},
 			{
-				"command": "md-pic.upload_local",
+				"command": "extention.upload_local",
 				"title": "uploadLocal"
 			}
 		],
