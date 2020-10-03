@@ -7,6 +7,8 @@ const fs = require("fs");
  */
 function activate(context) {
 	console.log('"md-pic" is now active!');
+	vscode.window.showInformationMessage("active");
+
 	let sub = context.subscriptions;
 	sub.push(vscode.commands.registerCommand('md-pic.upload_remote', disposeRemotePic));
 	sub.push(vscode.commands.registerCommand('md-pic.upload_local', disposeLocalPic));
