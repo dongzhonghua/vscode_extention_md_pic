@@ -10,14 +10,18 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:md-pic.helloWorld"
+		"*"
 	],
 	"main": "./extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "md-pic.helloWorld",
-				"title": "Hello World"
+				"command": "md-pic.upload_remote",
+				"title": "uploadRemote"
+			},
+			{
+				"command": "md-pic.upload_local",
+				"title": "uploadLocal"
 			}
 		]
 	},
