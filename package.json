@@ -1,5 +1,6 @@
 {
 	"name": "md-pic",
+	"publisher": "dongzhonghua",
 	"displayName": "md_pic",
 	"description": "md pic",
 	"version": "0.0.1",
@@ -23,7 +24,33 @@
 				"command": "md-pic.upload_local",
 				"title": "uploadLocal"
 			}
-		]
+		],
+		"configuration": {
+			"type": "object",
+			"title": "mdPic配置",
+			"properties": {
+				"pic.github_name": {
+					"type": "string",
+					"default": "dzh",
+					"description": "你的名字"
+				},
+				"pic.github_email": {
+					"type": "string",
+					"default": "null",
+					"description": "email"
+				},
+				"pic.github_url": {
+					"type": "string",
+					"default": "https://api.github.com/repos/dongzhonghua/dongzhonghua.github.io/contents/img/blog/",
+					"description": "github仓库"
+				},
+				"pic.github_authorization": {
+					"type": "string",
+					"default": "null",
+					"description": "auth"
+				}
+			}
+		}
 	},
 	"scripts": {
 		"lint": "eslint .",

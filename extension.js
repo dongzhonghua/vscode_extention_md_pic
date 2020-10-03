@@ -78,13 +78,18 @@ function disposeLocalPic() {
  * @param {string} base64_data
  */
 function upload(pic_name, base64_data) {
-	const url = 'https://api.github.com/repos/dongzhonghua/dongzhonghua.github.io/contents/img/blog/';
-	const headers = { 'content-type': 'application/json', 'Authorization': 'Bearer 078ff387f1a0e639b6fe820ae5454be9f263909a' };
+	const url = vscode.workspace.getConfiguration().get('pic.github_url');
+	const name = vscode.workspace.getConfiguration().get('pic.github_name');
+	const email = vscode.workspace.getConfiguration().get('pic.github_email');
+	const auth = vscode.workspace.getConfiguration().get('pic.github_authorization');
+	// const url = 'https://api.github.com/repos/dongzhonghua/dongzhonghua.github.io/contents/img/blog/;
+	const headers = { 'content-type': 'application/json', 'Authorization': auth };
+	// 'Bearer 078ff387f1a0e639b6fe820ae5454be9f263909a'
 	const jdata = JSON.stringify({
 		"message": pic_name,
 		"committer": {
-			"name": "dongzhonghua",
-			"email": "1518943695@qq.com"
+			"name": name,
+			"email": email
 		},
 		"content": base64_data
 	});
@@ -105,7 +110,6 @@ function upload(pic_name, base64_data) {
 			console.error("upload url failed!")
 			vscode.window.showInformationMessage("upload url failed, please try again!");
 		}
-
 	}).catch(function (error) {
 		console.log(error);
 		vscode.window.showInformationMessage("upload url failed, please try again!");
