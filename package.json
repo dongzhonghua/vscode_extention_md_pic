@@ -1,6 +1,9 @@
 {
 	"name": "md-pic",
 	"publisher": "dongzhonghua",
+	"repository": {
+		"url": "https://github.com/dongzhonghua/vscode_extention_md_pic.git"
+	},
 	"displayName": "md_pic",
 	"description": "md pic",
 	"version": "0.0.3",
