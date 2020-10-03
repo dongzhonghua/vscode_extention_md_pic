@@ -17,6 +17,10 @@
 	"contributes": {
 		"commands": [
 			{
+				"command": "md.upload",
+				"title": "upload"
+			},
+			{
 				"command": "md-pic.upload_remote",
 				"title": "uploadRemote"
 			},
