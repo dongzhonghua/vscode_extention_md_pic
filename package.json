@@ -6,7 +6,7 @@
 	},
 	"displayName": "md_pic",
 	"description": "md pic",
-	"version": "0.0.4",
+	"version": "0.0.5",
 	"engines": {
 		"vscode": "^1.49.0"
 	},
