@@ -7,11 +7,10 @@ const fs = require("fs");
  */
 function activate(context) {
 	console.log('"md-pic" is now active!');
-	const dispos = vscode.commands.registerCommand("extention.upload", function(){
+	const dispos = vscode.commands.registerCommand("extention.upload", function () {
 		vscode.window.showInformationMessage("active!");
 	});
 	context.subscriptions.push(dispos);
-
 
 	let sub = context.subscriptions;
 	sub.push(vscode.commands.registerCommand('extention.upload_remote', disposeRemotePic));
@@ -70,9 +69,9 @@ function disposeLocalPic() {
 		}).then(function (msg) {
 			const path = msg[0].path;
 			console.log(path);
-			var data = fs.readFileSync(path.substring(1));
+			// var data = fs.readFileSync(path.substring(1));
+			var data = fs.readFileSync(path);
 			const base64Data = Buffer.from(data).toString('base64');
-			console.log(base64Data);
 			const paths = path.split("/");
 			const pic_name = paths[paths.length - 1];
 			upload(pic_name, base64Data);
@@ -88,9 +87,8 @@ function upload(pic_name, base64_data) {
 	const name = vscode.workspace.getConfiguration().get('pic.github_name');
 	const email = vscode.workspace.getConfiguration().get('pic.github_email');
 	const auth = vscode.workspace.getConfiguration().get('pic.github_authorization');
-	// const url = 'https://api.github.com/repos/dongzhonghua/dongzhonghua.github.io/contents/img/blog/;
+	console.log(auth);
 	const headers = { 'content-type': 'application/json', 'Authorization': auth };
-	// 'Bearer 078ff387f1a0e639b6fe820ae5454be9f263909a'
 	const jdata = JSON.stringify({
 		"message": pic_name,
 		"committer": {
@@ -99,11 +97,11 @@ function upload(pic_name, base64_data) {
 		},
 		"content": base64_data
 	});
-	axios.put(
-		url + pic_name,
-		jdata,
-		{ headers: headers }
+	axios.put(url + pic_name, jdata, {
+		headers: headers
+	}
 	).then(res => {
+		console.log(res);
 		if (res.status = 200) {
 			const git_url = res.data["content"]["download_url"]
 			console.log(git_url);
