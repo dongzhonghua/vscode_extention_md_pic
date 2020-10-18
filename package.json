@@ -39,25 +39,15 @@
 			"type": "object",
 			"title": "mdPic配置",
 			"properties": {
-				"pic.github_name": {
+				"pic.git": {
 					"type": "string",
-					"default": "dzh",
-					"description": "你的名字"
+					"default": "https://gitee.com/api/v5/repos/dongzhonghua/zhonghua/contents/img/blog/",
+					"description": "git仓库"
 				},
-				"pic.github_email": {
+				"pic.access_token": {
 					"type": "string",
 					"default": "null",
-					"description": "email"
-				},
-				"pic.github_url": {
-					"type": "string",
-					"default": "https://api.github.com/repos/dongzhonghua/dongzhonghua.github.io/contents/img/blog/",
-					"description": "github仓库"
-				},
-				"pic.github_authorization": {
-					"type": "string",
-					"default": "null",
-					"description": "auth"
+					"description": "access_token"
 				}
 			}
 		}
