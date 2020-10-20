@@ -135,10 +135,14 @@ function uploadGitee(pic_name, base64_data) {
 	});
 	console.log(headers)
 	console.log(jdata);
-
-	axios.post(encodeURI(url + pic_name), jdata, {
-		headers: headers
-	}
+	const post_url = encodeURI(url + pic_name);
+	console.log(post_url);
+	axios.post(
+		post_url,
+		jdata,
+		{
+			headers: headers
+		}
 	).then(res => {
 		console.log(res);
 		if (res.status = 200) {
@@ -149,13 +153,10 @@ function uploadGitee(pic_name, base64_data) {
 				const end = new vscode.Position(vscode.window.activeTextEditor.selection.active.line + 1, 0);
 				editBuilder.replace(new vscode.Range(new vscode.Position(vscode.window.activeTextEditor.selection.active.line, 0), end), md_img);
 			});
-		} else {
-			console.error("upload url failed!")
-			vscode.window.showInformationMessage("upload url failed, please try again!");
 		}
 	}).catch(function (error) {
 		console.log(error);
-		vscode.window.showInformationMessage("upload url failed, please try again!");
+		vscode.window.showInformationMessage(error.message);
 	});
 
 }
